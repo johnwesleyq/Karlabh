@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lekha — preview</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist@latest/index.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist-mono@latest/index.css" />
+<style>
+  :root{
+    --bg:#FFFFFF; --alt:#F6F7F9; --card:#FFFFFF; --ink:#1E2125; --muted:#666B72;
+    --line:#E6E8EB; --primary:#E42527; --primary-hover:#C81E23; --primary-soft:#FDEAEA;
+    --accent:#F1971C; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+  body{font-family:"Geist","system-ui",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .num{font-family:"Geist Mono",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  .eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:600;
+    text-transform:uppercase;letter-spacing:.14em;color:var(--primary)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 26px;
+    border-radius:999px;font-weight:500;font-size:15px;border:1px solid transparent;cursor:pointer;
+    transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
+  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 1px 3px rgba(30,33,37,.1)}
+  .btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(228,37,39,.4)}
+  .btn-outline{background:#fff;border-color:var(--line);color:var(--ink)}
+  .btn-outline:hover{border-color:#c9ccd1;background:var(--alt)}
+  .btn-sm{height:38px;padding:0 18px;font-size:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 3px rgba(30,33,37,.05)}
+
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px;letter-spacing:-.02em}
+  .mark{width:28px;height:28px;border-radius:8px;background:var(--primary);display:grid;place-items:center;color:#fff}
+  .navlinks{display:flex;gap:2px}
+  .navlinks a{padding:8px 14px;border-radius:8px;font-size:14px;color:var(--muted);transition:color .2s}
+  .navlinks a:hover{color:var(--ink)}
+  @media(max-width:780px){.navlinks{display:none}}
+
+  .hero{position:relative;overflow:hidden;text-align:center;padding:72px 0 44px}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% -10%,rgba(228,37,39,.07),transparent 70%)}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--muted)}
+  .pdot{width:6px;height:6px;border-radius:50%;background:var(--primary)}
+  h1{margin-top:24px;font-size:clamp(36px,6.2vw,66px);line-height:1.03;letter-spacing:-.04em;font-weight:600}
+  .sub{max-width:600px;margin:24px auto 0;color:var(--muted);font-size:19px;line-height:1.55}
+  .cta-row{display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap}
+  .micro{display:flex;gap:22px;justify-content:center;margin-top:20px;font-size:13px;color:var(--muted)}
+  .micro span{display:inline-flex;gap:6px;align-items:center}
+  .micro b{color:var(--primary)}
+
+  .board-shell{max-width:1000px;margin:56px auto 0;position:relative}
+  .chrome{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--alt)}
+  .tl{width:11px;height:11px;border-radius:50%;background:#d6d9dd}
+  .url{margin-left:8px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted)}
+  .urldot{width:6px;height:6px;border-radius:50%;background:#1E8A5E}
+  .badge-clients{margin-left:auto;background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px}
+  .kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px;background:var(--alt)}
+  @media(max-width:720px){.kanban{grid-template-columns:repeat(2,1fr)}}
+  .col-head{display:flex;align-items:center;gap:8px;padding:0 4px 10px;font-size:12px;font-weight:600}
+  .col-head .cnt{margin-left:auto;color:var(--muted);font-weight:400}
+  .cdot{width:8px;height:8px;border-radius:50%}
+  .ccard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(30,33,37,.05);transition:.2s;cursor:grab}
+  .ccard:hover{box-shadow:0 8px 20px -8px rgba(30,33,37,.18);transform:translateY(-1px)}
+  .ccard .top{display:flex;justify-content:space-between;align-items:center}
+  .cname{font-size:13px;font-weight:500}
+  .chip{font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px}
+  .chip-due{background:rgba(241,151,28,.16);color:#a9650a}
+  .chip-soon{background:var(--alt);color:var(--muted)}
+  .chip-done{background:rgba(30,138,94,.14);color:#157049}
+  .pan{font-size:11px;color:var(--muted);margin-top:4px}
+  .prog{display:flex;align-items:center;gap:8px;margin-top:10px}
+  .track{flex:1;height:6px;border-radius:999px;background:var(--alt);overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:var(--primary)}
+  .pct{font-size:10px;color:var(--muted)}
+
+  .stripsec{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:56px 0}
+  .trustedline{text-align:center;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 16px;margin-top:40px}
+  @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat{text-align:center}
+  .stat .v{font-size:38px;font-weight:600;letter-spacing:-.04em}
+  .stat .l{font-size:14px;color:var(--muted);margin-top:6px;max-width:220px;margin-left:auto;margin-right:auto}
+
+  section.pad{padding:88px 0}
+  .alt{background:var(--alt)}
+  .head{max-width:660px;margin:0 auto;text-align:center}
+  .head h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.03em;margin-top:16px;font-weight:600}
+  .head p{color:var(--muted);margin-top:16px;font-size:16px}
+
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+  @media(max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:600px){.grid3{grid-template-columns:1fr}}
+  .feat{padding:26px;height:100%;transition:transform .3s,box-shadow .3s}
+  .feat:hover{transform:translateY(-4px);box-shadow:0 14px 30px -12px rgba(30,33,37,.18)}
+  .ficon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:20px}
+  .feat h3{font-size:18px;margin-top:20px;font-weight:600}
+  .feat p{color:var(--muted);font-size:14px;margin-top:8px;line-height:1.6}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+  @media(max-width:840px){.steps{grid-template-columns:repeat(2,1fr)}}
+  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(30,33,37,.05)}
+  .step .n{font-family:"Geist Mono",monospace;font-size:24px;font-weight:600;color:var(--primary);letter-spacing:-.03em}
+  .step h3{font-size:16px;margin-top:12px;font-weight:600}
+  .step p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.55}
+
+  .savings{max-width:780px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  @media(max-width:560px){.savings{grid-template-columns:1fr}}
+  .sv{padding:24px;text-align:center;background:#fff}
+  .sv .k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .sv .a{font-size:24px;font-weight:600;margin-top:8px}
+  .sv.line .a{color:var(--muted);text-decoration:line-through}
+  .sv.red{background:var(--primary);color:#fff}.sv.red .k{color:rgba(255,255,255,.85)}
+  .sv.amber{background:rgba(241,151,28,.1)}.sv.amber .k,.sv.amber .a{color:#a9650a}
+  .quote{padding:26px;display:flex;flex-direction:column;height:100%}
+  .quote .qi{color:rgba(228,37,39,.25);font-size:30px;line-height:1;font-family:Georgia,serif}
+  .quote .q{font-size:15px;line-height:1.6;flex:1;margin-top:8px}
+  .quote .by{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+  .quote .by b{font-size:14px;font-weight:600}.quote .by span{display:block;font-size:12px;color:var(--muted)}
+
+  .prices{max-width:1020px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+  @media(max-width:900px){.prices{grid-template-columns:1fr;max-width:420px}}
+  .price{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 1px 3px rgba(30,33,37,.05)}
+  .price.hi{border:2px solid var(--primary);box-shadow:0 18px 40px -16px rgba(228,37,39,.28)}
+  .tag{position:absolute;top:-13px;left:30px;background:var(--primary);color:#fff;font-size:12px;font-weight:600;padding:5px 14px;border-radius:999px}
+  .price h3{font-size:18px;font-weight:600}
+  .price .tl{font-size:14px;color:var(--muted);margin-top:4px}
+  .amt{margin-top:24px;display:flex;align-items:flex-end;gap:6px}
+  .amt .big{font-size:40px;font-weight:600;letter-spacing:-.04em}
+  .amt .per{color:var(--muted);font-size:14px;margin-bottom:7px}
+  .feats{list-style:none;margin-top:24px;padding-top:24px;border-top:1px solid var(--line);display:grid;gap:13px}
+  .feats li{display:flex;gap:10px;font-size:14px;align-items:flex-start;color:#3a3e44}
+  .feats .tick{color:var(--primary);font-weight:700;margin-top:1px}
+  .price .btn{margin-top:26px;width:100%}
+
+  .closebox{position:relative;overflow:hidden;border-radius:24px;background:var(--ink);color:#fff;padding:64px 24px;text-align:center;margin:88px 0}
+  .closebox::after{content:"";position:absolute;left:50%;top:-40%;width:520px;height:380px;transform:translateX(-50%);border-radius:50%;background:rgba(228,37,39,.35);filter:blur(70px)}
+  .closebox h2{position:relative;font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;font-weight:600}
+  .closebox p{position:relative;color:rgba(255,255,255,.7);margin:16px auto 0;max-width:480px}
+  .closebox .btn{position:relative;margin-top:32px}
+
+  footer{border-top:1px solid var(--line);background:#fff;padding:56px 0}
+  .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
+  @media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr}}
+  .fgrid p{color:var(--muted);font-size:14px;margin-top:16px;max-width:280px}
+  .fgrid h4{font-size:14px;font-weight:600}
+  .fgrid ul{list-style:none;margin-top:16px;display:grid;gap:10px}
+  .fgrid ul a{font-size:14px;color:var(--muted)}.fgrid ul a:hover{color:var(--ink)}
+  .fbottom{display:flex;justify-content:space-between;gap:12px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:12px;color:var(--muted);flex-wrap:wrap}
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><nav>
+  <a class="brand" href="#"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16" opacity=".55"/><path d="M9.5 13.5l2.5 2.5L19 8.5"/></svg></span>Lekha</a>
+  <div class="navlinks"><a href="#features">Features</a><a href="#how">How it works</a><a href="#proof">Firms</a><a href="#pricing">Pricing</a></div>
+  <div style="display:flex;gap:8px"><a class="btn btn-outline btn-sm" href="#">Log in</a><a class="btn btn-primary btn-sm" href="#pricing">Sign up free</a></div>
+</nav></div></header>
+
+<section class="hero"><div class="wrap">
+  <span class="pill"><span class="pdot"></span>Built for Indian CAs · WhatsApp-native</span>
+  <h1>Stop chasing clients<br>for documents.</h1>
+  <p class="sub">Lekha sends WhatsApp reminders, collects documents through a no-login link, and tracks every client&rsquo;s filing status on one clean board. The follow-ups run themselves.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#pricing">Get started for free →</a>
+    <a class="btn btn-outline" href="#how">See how it works</a>
+  </div>
+  <div class="micro"><span><b>✓</b> No card required</span><span><b>✓</b> Set up in one afternoon</span></div>
+
+  <div class="board-shell card" style="overflow:hidden">
+    <div class="chrome">
+      <span class="tl"></span><span class="tl"></span><span class="tl"></span>
+      <span class="url"><span class="urldot"></span>app.lekha.in/board · FY 2025-26</span>
+      <span class="badge-clients">42 active clients</span>
+    </div>
+    <div class="kanban" id="kanban"></div>
+  </div>
+</div></section>
+
+<section class="stripsec"><div class="wrap">
+  <p class="trustedline reveal">Trusted by practices in Chennai · Bengaluru · Hyderabad · Mumbai · Pune · Kochi</p>
+  <div class="stats" id="stats"></div>
+</div></section>
+
+<section class="pad" id="features"><div class="wrap">
+  <div class="head reveal">
+    <span class="eyebrow">The practice, organised</span>
+    <h2>Everything between &ldquo;send your docs&rdquo; and &ldquo;return filed.&rdquo;</h2>
+    <p>Lekha doesn&rsquo;t touch your filing software. It fixes the part that actually eats your week — collecting documents and keeping clients moving.</p>
+  </div>
+  <div class="grid3" id="features-grid"></div>
+</div></section>
+
+<section class="pad alt" id="how"><div class="wrap">
+  <div class="head reveal">
+    <span class="eyebrow">From profile to paid</span>
+    <h2>Four steps. Then it runs without you.</h2>
+  </div>
+  <div class="steps" id="steps"></div>
+</div></section>
+
+<section class="pad" id="proof"><div class="wrap">
+  <div class="head reveal">
+    <span class="eyebrow">Why firms switch</span>
+    <h2>One subscription, instead of one more junior.</h2>
+  </div>
+  <div class="savings reveal">
+    <div class="sv line"><div class="k">Junior chasing docs</div><div class="a num">₹15,000<span style="font-size:14px">/mo</span></div></div>
+    <div class="sv red"><div class="k">Lekha</div><div class="a num">₹1,999<span style="font-size:14px">/mo</span></div></div>
+    <div class="sv amber"><div class="k">You keep</div><div class="a num">₹13,001<span style="font-size:14px">/mo</span></div></div>
+  </div>
+  <div class="grid3" id="tst"></div>
+</div></section>
+
+<section class="pad alt" id="pricing"><div class="wrap">
+  <div class="head reveal">
+    <span class="eyebrow">Pricing</span>
+    <h2>The CA pays. The client never does.</h2>
+    <p>Every plan starts with a 14-day free trial. No card to begin, and your clients upload and receive reminders for free, forever.</p>
+  </div>
+  <div class="prices" id="prices"></div>
+</div></section>
+
+<section><div class="wrap"><div class="closebox reveal">
+  <h2>Get this filing season off the phone.</h2>
+  <p>Set up your first ten clients in an afternoon. The reminders start working tonight.</p>
+  <a class="btn btn-primary" href="#pricing">Get started for free →</a>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <a class="brand" href="#"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16" opacity=".55"/><path d="M9.5 13.5l2.5 2.5L19 8.5"/></svg></span>Lekha</a>
+      <p>The client OS for chartered accountants. Collect documents, chase nobody, file on time.</p>
+    </div>
+    <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Client mini-app</a></li></ul></div>
+    <div><h4>Firm</h4><ul><li><a href="#">For solo CAs</a></li><li><a href="#">For firms</a></li><li><a href="#">Security</a></li><li><a href="#">Contact sales</a></li></ul></div>
+    <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Support</a></li></ul></div>
+  </div>
+  <div class="fbottom"><span>© 2026 Lekha. Made in India.</span><span>WhatsApp reminders · No-login uploads · UPI fee collection</span></div>
+</div></footer>
+
+<script>
+const columns=[
+ {label:"Docs Pending",tint:"#8A8F99",cards:[{n:"Anjali Iyer",p:"A•••PI4521K",d:0,t:6,days:11},{n:"Karthik Rao",p:"B•••KR7782L",d:1,t:8,days:9}]},
+ {label:"Partial",tint:"#F1971C",cards:[{n:"Ramesh Kumar",p:"C•••RK3390M",d:3,t:5,days:4},{n:"Divya Menon",p:"D•••DM1188N",d:5,t:7,days:6}]},
+ {label:"Under Review",tint:"#2F7FD1",cards:[{n:"Suresh Pillai",p:"E•••SP6620P",d:8,t:8,days:2}]},
+ {label:"Filed",tint:"#1E8A5E",cards:[{n:"Meena Nair",p:"F•••MN4407Q",d:6,t:6,days:0}]},
+];
+document.getElementById("kanban").innerHTML=columns.map(c=>`
+ <div><div class="col-head"><span class="cdot" style="background:${c.tint}"></span>${c.label}<span class="cnt num">${c.cards.length}</span></div>
+ ${c.cards.map(k=>{const chip=k.days===0?'<span class="chip chip-done">Done</span>':`<span class="chip ${k.days<=4?'chip-due':'chip-soon'}">${k.days}d left</span>`;
+ return `<div class="ccard"><div class="top"><span class="cname">${k.n}</span>${chip}</div>
+ <div class="pan num">${k.p}</div>
+ <div class="prog"><div class="track"><div class="fill" style="width:${Math.round(k.d/k.t*100)}%"></div></div><span class="pct num">${k.d}/${k.t}</span></div></div>`}).join("")}</div>`).join("");
+
+const stats=[["11 hrs","saved per staff member, weekly"],["3 taps","for a client to upload — no login"],["0 calls","to chase a single document"],["200+","CA firms across India"]];
+document.getElementById("stats").innerHTML=stats.map((s,i)=>`<div class="stat reveal" style="transition-delay:${i*70}ms"><div class="v">${s[0]}</div><div class="l">${s[1]}</div></div>`).join("");
+
+const features=[
+ ["⊞","#E11D48","#FFE4E6","One board for every client","Drag clients across Pending → Partial → Under Review → Filed → Closed. See the whole practice at a glance."],
+ ["✆","#059669","#D1FAE5","WhatsApp that follows up itself","Reminders fire 3 days out, 1 day out, the morning of. Your juniors stop dialing; the messages do the chasing."],
+ ["🔗","#2563EB","#DBEAFE","No-login client mini-app","Clients open a secure link, see what's missing, and upload from their phone. No accounts, no passwords."],
+ ["☑","#7C3AED","#EDE9FE","Checklists that build themselves","Pick salaried, business, or NRI and Lekha generates the required-document list. Add GST & TDS as you grow."],
+ ["✓","#D97706","#FEF3C7","Review without the clutter","Open every uploaded PDF in one place. Approve or request a re-upload in a click — the client is notified."],
+ ["₹","#0D9488","#CCFBF1","Get paid on filing","Send a UPI link the moment you mark a return filed. Fee and acknowledgment go out in the same message."],
+];
+document.getElementById("features-grid").innerHTML=features.map((f,i)=>`
+ <div class="feat card reveal" style="transition-delay:${(i%3)*70}ms"><div class="ficon" style="color:${f[1]};background:${f[2]}">${f[0]}</div><h3>${f[3]}</h3><p>${f[4]}</p></div>`).join("");
+
+const steps=[
+ ["01","Create the client, get a checklist","Pick the client type. Lekha auto-builds the document list and a secure upload link in seconds."],
+ ["02","WhatsApp goes out","The client gets a friendly message with their link. No app to install — it opens in their browser."],
+ ["03","Documents arrive on their own","Clients upload from their phone. Auto-reminders nudge the stragglers. You watch cards turn green."],
+ ["04","File, confirm, collect","Review, mark filed, and send the UPI fee link — acknowledgment and payment request go out together."],
+];
+document.getElementById("steps").innerHTML=steps.map((s,i)=>`<div class="step reveal" style="transition-delay:${(i%4)*60}ms"><div class="n">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join("");
+
+const tst=[
+ ["Two weeks before the deadline used to mean two phones ringing all day. Now the board tells me who's behind and the reminders handle the rest.","CA Lakshmi Venkatesh","Venkatesh & Co., Chennai"],
+ ["My clients love that they don't need yet another login. They tap the WhatsApp link, upload, done. Our document chase went from days to hours.","CA Arjun Reddy","Reddy Associates, Hyderabad"],
+ ["I run a three-person firm. Lekha effectively replaced the follow-up work of a full-time junior during filing season.","CA Priya Sharma","Sharma & Partners, Bengaluru"],
+];
+document.getElementById("tst").innerHTML=tst.map((t,i)=>`<figure class="quote card reveal" style="transition-delay:${i*70}ms"><div class="qi">&ldquo;</div><blockquote class="q">${t[0]}</blockquote><figcaption class="by"><b>${t[1]}</b><span>${t[2]}</span></figcaption></figure>`).join("");
+
+const plans=[
+ ["Solo Practice","For independent CAs and small practices.","₹1,999","/month",false,"Start free trial",["Up to 50 active clients","Unlimited document checklists","WhatsApp reminders & auto-follow-ups","Client upload mini-app (no login)","Kanban filing dashboard"]],
+ ["Growing Firm","For multi-partner firms that file at scale.","₹19,999","/year",true,"Start free trial",["Unlimited clients","White-label client portal","Team access & role permissions","UPI fee collection (Razorpay)","GST, TDS & advance-tax checklists","Priority WhatsApp support"]],
+ ["Enterprise","For networks, franchises & large practices.","Custom","",false,"Talk to sales",["Everything in Growing Firm","Dedicated onboarding","Custom integrations & SSO","SLA & data-residency options"]],
+];
+document.getElementById("prices").innerHTML=plans.map(p=>`
+ <div class="price reveal ${p[4]?'hi':''}">${p[4]?'<span class="tag">Most popular</span>':''}
+ <h3>${p[0]}</h3><div class="tl">${p[1]}</div>
+ <div class="amt">${p[2]==='Custom'?'<span class="big">Custom</span>':`<span class="big num">${p[2]}</span><span class="per">${p[3]}</span>`}</div>
+ <a class="btn ${p[4]?'btn-primary':'btn-outline'}" href="#">${p[5]}</a>
+ <ul class="feats">${p[6].map(f=>`<li><span class="tick">✓</span>${f}</li>`).join("")}</ul></div>`).join("");
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
