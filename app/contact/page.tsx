@@ -8,7 +8,7 @@ export default function ContactPage() {
           Let&apos;s talk Enterprise
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Email <a className="text-primary hover:underline" href="mailto:sales@lekha.in">sales@lekha.in</a> and
+          Email <a className="text-primary hover:underline" href="mailto:sales@karlabh.com">sales@karlabh.com</a> and
           we&apos;ll set up your network, onboarding, and data-residency needs.
         </p>
         <Link href="/" className="mt-6 inline-block text-sm text-muted-foreground hover:text-ink">

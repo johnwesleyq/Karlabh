@@ -56,7 +56,7 @@ export function HeroPreview() {
           <span className="h-2.5 w-2.5 rounded-full bg-border" />
           <div className="ml-3 flex items-center gap-2 rounded-md bg-card px-3 py-1 text-xs text-muted-foreground shadow-xs">
             <span className="h-1.5 w-1.5 rounded-full bg-status-filed" />
-            app.lekha.in/board · FY 2025-26
+            app.karlabh.com/board · FY 2025-26
           </div>
           <div className="ml-auto hidden items-center gap-2 sm:flex">
             <span className="rounded-md bg-primary-soft px-2.5 py-1 text-xs font-medium text-primary">
