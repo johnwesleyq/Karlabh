@@ -8,14 +8,15 @@ export const dynamic = "force-dynamic";
 export default async function ClientUploadPage({
   params,
 }: {
-  params: { token: string };
+  params: Promise<{ token: string }>;
 }) {
+  const { token } = await params;
   const admin = createAdminSupabase();
 
   const { data: link } = await admin
     .from("share_links")
     .select("client_id, expires_at")
-    .eq("token", params.token)
+    .eq("token", token)
     .single();
 
   if (!link || (link.expires_at && new Date(link.expires_at) < new Date())) {
@@ -40,12 +41,14 @@ export default async function ClientUploadPage({
       req_key: string;
     }[]) ?? [];
   docs.sort((a, b) => a.label.localeCompare(b.label));
+
   const firmRel = client.ca_firms as
     | { name?: string }
     | { name?: string }[]
     | null;
   const firm =
     (Array.isArray(firmRel) ? firmRel[0]?.name : firmRel?.name) ?? "Your CA";
+
   const done = docs.filter(
     (d) => d.status === "uploaded" || d.status === "approved",
   ).length;
@@ -67,8 +70,7 @@ export default async function ClientUploadPage({
             documents for FY {client.filing_year}
             {client.deadline
               ? ` · due ${new Date(client.deadline).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}`
-              : ""}
-            .
+              : ""}.
           </p>
 
           <div className="mt-4 flex items-center gap-2">
@@ -87,7 +89,7 @@ export default async function ClientUploadPage({
             {docs.map((d) => (
               <UploadRow
                 key={d.id}
-                token={params.token}
+                token={token}
                 documentId={d.id}
                 label={d.label}
                 status={d.status}

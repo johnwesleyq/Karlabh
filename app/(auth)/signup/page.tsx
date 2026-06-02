@@ -3,11 +3,12 @@ import { signUp } from "../actions";
 import { AuthShell, Field } from "../auth-ui";
 import { Button } from "@/components/ui/button";
 
-export default function SignupPage({
+export default async function SignupPage({
   searchParams,
 }: {
-  searchParams: { error?: string };
+  searchParams: Promise<{ error?: string }>;
 }) {
+  const { error } = await searchParams;
   return (
     <AuthShell
       title="Start your free trial"
@@ -25,9 +26,9 @@ export default function SignupPage({
         <Field label="Firm name" name="firmName" required placeholder="Venkatesh & Co." />
         <Field label="Work email" name="email" type="email" required placeholder="you@firm.in" />
         <Field label="Password" name="password" type="password" required placeholder="At least 6 characters" />
-        {searchParams.error && (
+        {error && (
           <p className="rounded-lg bg-primary-soft px-3 py-2 text-sm text-primary">
-            {searchParams.error}
+            {error}
           </p>
         )}
         <Button type="submit" size="lg" className="w-full">

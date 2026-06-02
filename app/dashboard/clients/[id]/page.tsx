@@ -19,17 +19,19 @@ export default async function ClientDetail({
   params,
   searchParams,
 }: {
-  params: { id: string };
-  searchParams: { error?: string };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
-  const supabase = createServerSupabase();
+  const { id } = await params;
+  const { error } = await searchParams;
+  const supabase = await createServerSupabase();
 
   const { data: client } = await supabase
     .from("clients")
     .select(
       "id, full_name, pan, email, phone, client_type, deadline, fee_amount, status, documents(id, label, status, storage_path, uploaded_at), share_links(token)",
     )
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (!client) notFound();
@@ -45,7 +47,6 @@ export default async function ClientDetail({
   const token = (client.share_links as { token: string }[] | null)?.[0]?.token;
   const uploadUrl = token ? `${APP_URL}/c/${token}` : "";
 
-  // Signed URLs for uploaded files (private bucket, server-generated).
   const admin = createAdminSupabase();
   const links: Record<string, string> = {};
   for (const d of docs) {
@@ -66,7 +67,6 @@ export default async function ClientDetail({
       <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-ink">
         ← Back to board
       </Link>
-
       <div className="mt-4 rounded-2xl border border-border bg-card p-7 shadow-sm">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
@@ -83,13 +83,11 @@ export default async function ClientDetail({
             {done}/{docs.length} received
           </span>
         </div>
-
-        {searchParams.error && (
+        {error && (
           <p className="mt-4 rounded-lg bg-primary-soft px-3 py-2 text-sm text-primary">
-            {searchParams.error}
+            {error}
           </p>
         )}
-
         <div className="mt-5 flex flex-wrap items-center gap-3">
           <CopyLink url={uploadUrl} />
           <form action={sendReminder.bind(null, client.id)}>
@@ -113,35 +111,23 @@ export default async function ClientDetail({
           {docs.map((d) => (
             <li key={d.id} className="flex items-center gap-3 px-6 py-3.5">
               <span className="flex-1 text-sm text-ink">{d.label}</span>
-              <span
-                className={`rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${
-                  STATUS_STYLE[d.status] ?? STATUS_STYLE.pending
-                }`}
-              >
+              <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium capitalize ${STATUS_STYLE[d.status] ?? STATUS_STYLE.pending}`}>
                 {d.status}
               </span>
               {links[d.id] && (
-                <a
-                  href={links[d.id]}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-xs font-medium text-primary hover:underline"
-                >
+                <a href={links[d.id]} target="_blank" rel="noreferrer"
+                  className="text-xs font-medium text-primary hover:underline">
                   View
                 </a>
               )}
               {(d.status === "uploaded" || d.status === "rejected") && (
                 <form action={reviewDocument.bind(null, d.id, "approve", client.id)}>
-                  <button className="text-xs font-medium text-status-filed hover:underline">
-                    Approve
-                  </button>
+                  <button className="text-xs font-medium text-status-filed hover:underline">Approve</button>
                 </form>
               )}
               {d.status === "uploaded" && (
                 <form action={reviewDocument.bind(null, d.id, "reject", client.id)}>
-                  <button className="text-xs font-medium text-primary hover:underline">
-                    Re-request
-                  </button>
+                  <button className="text-xs font-medium text-primary hover:underline">Re-request</button>
                 </form>
               )}
             </li>

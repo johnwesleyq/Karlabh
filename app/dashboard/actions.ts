@@ -3,6 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createServerSupabase } from "@/lib/supabase/server";
+import { createAdminSupabase } from "@/lib/supabase/admin";
 import { checklistFor, type ClientType } from "@/lib/checklists";
 import { sendWhatsApp } from "@/lib/whatsapp";
 import { createPaymentLink } from "@/lib/razorpay";
@@ -10,20 +11,15 @@ import { createPaymentLink } from "@/lib/razorpay";
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 async function requireFirmId() {
-  const supabase = createServerSupabase();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const supabase = await createServerSupabase();
+  const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
-  const { data: member } = await supabase
-    .from("ca_members")
-    .select("firm_id")
-    .eq("user_id", user.id)
-    .single();
+  const { data: firmId } = await supabase
+    .rpc("get_firm_id_for_user", { p_user_id: user.id });
 
-  if (!member) throw new Error("No firm found for this user.");
-  return { supabase, firmId: member.firm_id as string };
+  if (!firmId) throw new Error("No firm found for this user.");
+  return { supabase, firmId: firmId as string };
 }
 
 export async function createClientAction(formData: FormData) {

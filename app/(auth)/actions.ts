@@ -9,7 +9,7 @@ export async function signIn(formData: FormData) {
   const password = String(formData.get("password") ?? "");
   const next = String(formData.get("next") ?? "/dashboard");
 
-  const supabase = createServerSupabase();
+  const supabase = await createServerSupabase();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
@@ -28,7 +28,7 @@ export async function signUp(formData: FormData) {
     redirect(`/signup?error=${encodeURIComponent("Fill all fields (password 6+ chars).")}`);
   }
 
-  const supabase = createServerSupabase();
+  const supabase = await createServerSupabase();
   // firm_name is read by the handle_new_user trigger to create the firm + owner.
   const { error } = await supabase.auth.signUp({
     email,
@@ -44,7 +44,7 @@ export async function signUp(formData: FormData) {
 }
 
 export async function signOut() {
-  const supabase = createServerSupabase();
+  const supabase = await createServerSupabase();
   await supabase.auth.signOut();
   revalidatePath("/", "layout");
   redirect("/login");

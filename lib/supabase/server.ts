@@ -3,10 +3,10 @@ import { cookies } from "next/headers";
 
 /**
  * Per-request Supabase client bound to the user's session cookies.
- * Use in Server Components, Server Actions, and Route Handlers.
+ * Uses async cookies() required by Next.js 15+.
  */
-export function createServerSupabase() {
-  const cookieStore = cookies();
+export async function createServerSupabase() {
+  const cookieStore = await cookies();
   return createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
