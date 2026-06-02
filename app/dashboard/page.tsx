@@ -52,7 +52,7 @@ export default async function DashboardPage() {
         <div className="rounded-xl border border-dashed border-border bg-card p-16 text-center">
           <p className="text-ink">No clients yet.</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Add your first client and Lekha will generate their document
+            Add your first client and Karlabh will generate their document
             checklist and a secure upload link.
           </p>
           <Link href="/dashboard/new" className="mt-5 inline-block">

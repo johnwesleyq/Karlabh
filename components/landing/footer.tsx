@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LekhaMark } from "./logo";
+import { KarlabhMark } from "./logo";
 
 const groups = [
   {
@@ -38,9 +38,9 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Link href="/" className="flex items-center gap-2.5">
-              <LekhaMark className="h-7 w-7" />
+              <KarlabhMark className="h-7 w-7" />
               <span className="text-lg font-semibold tracking-tightest text-ink">
-                Lekha
+                Karlabh
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
@@ -69,7 +69,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row">
-          <span>© {new Date().getFullYear()} Lekha. Made in India.</span>
+          <span>© {new Date().getFullYear()} Karlabh. Made in India.</span>
           <span>WhatsApp reminders · No-login uploads · UPI fee collection</span>
         </div>
       </div>

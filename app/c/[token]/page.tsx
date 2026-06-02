@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { createAdminSupabase } from "@/lib/supabase/admin";
-import { LekhaMark } from "@/components/landing/logo";
+import { KarlabhMark } from "@/components/landing/logo";
 import { UploadRow } from "./upload";
 
 export const dynamic = "force-dynamic";
@@ -54,8 +54,8 @@ export default async function ClientUploadPage({
     <main className="min-h-screen bg-muted px-4 py-10">
       <div className="mx-auto max-w-xl">
         <div className="mb-6 flex items-center gap-2.5">
-          <LekhaMark className="h-7 w-7" />
-          <span className="font-semibold tracking-tightest text-ink">Lekha</span>
+          <KarlabhMark className="h-7 w-7" />
+          <span className="font-semibold tracking-tightest text-ink">Karlabh</span>
         </div>
 
         <div className="rounded-2xl border border-border bg-card p-7 shadow-sm">

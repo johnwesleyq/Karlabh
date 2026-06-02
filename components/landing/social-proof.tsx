@@ -18,7 +18,7 @@ const testimonials = [
   },
   {
     quote:
-      "I run a three-person firm. Lekha effectively replaced the follow-up work of a full-time junior during filing season.",
+      "I run a three-person firm. Karlabh effectively replaced the follow-up work of a full-time junior during filing season.",
     name: "CA Priya Sharma",
     firm: "Sharma & Partners, Bengaluru",
   },
@@ -51,7 +51,7 @@ export function SocialProof() {
             </div>
             <div className="bg-primary p-6 text-center text-primary-foreground">
               <div className="text-xs uppercase tracking-wide opacity-80">
-                Lekha
+                Karlabh
               </div>
               <div className="num mt-2 text-2xl font-semibold">
                 {inr(1999)}

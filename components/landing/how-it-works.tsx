@@ -4,7 +4,7 @@ const steps = [
   {
     n: "01",
     title: "Create the client, get a checklist",
-    body: "Pick the client type. Lekha auto-builds the required-document list and a secure upload link in seconds.",
+    body: "Pick the client type. Karlabh auto-builds the required-document list and a secure upload link in seconds.",
   },
   {
     n: "02",

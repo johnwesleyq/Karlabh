@@ -27,9 +27,24 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10"
         style={{
           background:
-            "radial-gradient(60% 50% at 50% -10%, hsl(359 78% 52% / 0.08), transparent 70%)",
+            "radial-gradient(60% 50% at 50% -10%, hsl(258 90% 66% / 0.20), transparent 70%)",
         }}
       />
+
+      {/* faint orbit rings */}
+      <svg
+        className="pointer-events-none absolute left-1/2 top-[-10%] -z-10 h-[760px] w-[760px] -translate-x-1/2 text-primary/15"
+        viewBox="0 0 760 760"
+        fill="none"
+        aria-hidden
+      >
+        <circle cx="380" cy="380" r="240" stroke="currentColor" />
+        <circle cx="380" cy="380" r="330" stroke="currentColor" opacity="0.6" />
+        <circle cx="380" cy="380" r="379" stroke="currentColor" opacity="0.35" />
+        <circle cx="620" cy="380" r="3.5" fill="hsl(var(--accent))" />
+        <circle cx="140" cy="380" r="2.5" fill="hsl(var(--primary))" />
+        <circle cx="380" cy="50" r="2.5" fill="hsl(var(--accent))" />
+      </svg>
 
       <div className="container pt-16 pb-12 md:pt-24 md:pb-16">
         <motion.div
@@ -77,7 +92,7 @@ export function Hero() {
             variants={item}
             className="mx-auto mt-6 max-w-xl text-pretty text-base text-muted-foreground sm:text-lg"
           >
-            Lekha sends WhatsApp reminders, collects documents through a
+            Karlabh sends WhatsApp reminders, collects documents through a
             no-login link, and tracks every client&apos;s filing status on one
             clean board. The follow-ups run themselves.
           </motion.p>

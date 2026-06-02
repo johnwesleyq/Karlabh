@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createServerSupabase } from "@/lib/supabase/server";
-import { LekhaMark } from "@/components/landing/logo";
+import { KarlabhMark } from "@/components/landing/logo";
 import { signOut } from "../(auth)/actions";
 
 export default async function DashboardLayout({
@@ -33,8 +33,8 @@ export default async function DashboardLayout({
       <header className="sticky top-0 z-40 border-b border-border bg-card">
         <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-6">
           <Link href="/dashboard" className="flex items-center gap-2.5">
-            <LekhaMark className="h-7 w-7" />
-            <span className="font-semibold tracking-tightest text-ink">Lekha</span>
+            <KarlabhMark className="h-7 w-7" />
+            <span className="font-semibold tracking-tightest text-ink">Karlabh</span>
             <span className="ml-2 hidden text-sm text-muted-foreground sm:inline">
               · {firmName}
             </span>

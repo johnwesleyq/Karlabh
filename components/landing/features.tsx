@@ -12,37 +12,37 @@ import { cn } from "@/lib/utils";
 const features = [
   {
     icon: LayoutGrid,
-    tint: "text-rose-600 bg-rose-50",
+    tint: "text-violet-300 bg-violet-500/10 ring-1 ring-violet-500/20",
     title: "One board for every client",
     body: "Drag clients across Pending → Partial → Under Review → Filed → Closed. See the whole practice at a glance, not one mailbox at a time.",
   },
   {
     icon: MessageCircle,
-    tint: "text-emerald-600 bg-emerald-50",
+    tint: "text-emerald-300 bg-emerald-500/10 ring-1 ring-emerald-500/20",
     title: "WhatsApp that follows up itself",
     body: "Reminders fire on a schedule — 3 days out, 1 day out, the morning of. Your juniors stop dialing; the messages do the chasing.",
   },
   {
     icon: Link2,
-    tint: "text-blue-600 bg-blue-50",
+    tint: "text-sky-300 bg-sky-500/10 ring-1 ring-sky-500/20",
     title: "No-login client mini-app",
     body: "Clients open a secure link, see exactly what's missing, and upload from their phone. No accounts, no passwords, no friction.",
   },
   {
     icon: ListChecks,
-    tint: "text-violet-600 bg-violet-50",
+    tint: "text-fuchsia-300 bg-fuchsia-500/10 ring-1 ring-fuchsia-500/20",
     title: "Checklists that build themselves",
-    body: "Pick salaried, business, or NRI and Lekha generates the required-document list. Add GST, TDS and advance-tax sets as you grow.",
+    body: "Pick salaried, business, or NRI and Karlabh generates the required-document list. Add GST, TDS and advance-tax sets as you grow.",
   },
   {
     icon: FileCheck2,
-    tint: "text-amber-600 bg-amber-50",
+    tint: "text-amber-300 bg-amber-500/10 ring-1 ring-amber-500/20",
     title: "Review without the clutter",
     body: "Open every uploaded PDF in one place. Approve or request a re-upload in a click — the client is notified instantly.",
   },
   {
     icon: Wallet,
-    tint: "text-teal-600 bg-teal-50",
+    tint: "text-teal-300 bg-teal-500/10 ring-1 ring-teal-500/20",
     title: "Get paid on filing",
     body: "Send a UPI link the moment you mark a return filed. Fee collection and acknowledgment go out in the same WhatsApp message.",
   },
@@ -60,7 +60,7 @@ export function Features() {
               &ldquo;return filed.&rdquo;
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Lekha doesn&apos;t touch your filing software. It fixes the part
+              Karlabh doesn&apos;t touch your filing software. It fixes the part
               that actually eats your week — collecting documents and keeping
               clients moving.
             </p>

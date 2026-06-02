@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 /** A ledger column with a filed checkmark — the brand mark. */
-export function LekhaMark({ className }: { className?: string }) {
+export function KarlabhMark({ className }: { className?: string }) {
   return (
     <span
       className={cn(

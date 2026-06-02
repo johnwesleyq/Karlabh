@@ -3,88 +3,96 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Lekha — preview</title>
+<title>Karlabh — preview</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist@latest/index.css" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist-mono@latest/index.css" />
 <style>
   :root{
-    --bg:#FFFFFF; --alt:#F6F7F9; --card:#FFFFFF; --ink:#1E2125; --muted:#666B72;
-    --line:#E6E8EB; --primary:#E42527; --primary-hover:#C81E23; --primary-soft:#FDEAEA;
-    --accent:#F1971C; --radius:14px;
+    --bg:#0B0913; --alt:#14111F; --card:#171426; --ink:#F3F1FB; --muted:#A39FB8;
+    --line:#2A2740; --primary:#8B5CF6; --primary-hover:#7C4DF0; --primary-soft:#241B3A;
+    --accent:#C99BFF; --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-  body{font-family:"Geist","system-ui",sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  body{font-family:"Geist","system-ui",sans-serif;color:var(--ink);line-height:1.5;
+    background:var(--bg);
+    background-image:
+      radial-gradient(60% 45% at 50% -5%, rgba(139,92,246,.22), transparent 70%),
+      radial-gradient(40% 40% at 88% 8%, rgba(201,155,255,.12), transparent 70%),
+      radial-gradient(45% 40% at 8% 28%, rgba(99,102,241,.10), transparent 70%);
+    background-attachment:fixed}
   .num{font-family:"Geist Mono",monospace;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
   a{color:inherit;text-decoration:none}
   .eyebrow{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:600;
-    text-transform:uppercase;letter-spacing:.14em;color:var(--primary)}
+    text-transform:uppercase;letter-spacing:.14em;color:var(--accent)}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 26px;
     border-radius:999px;font-weight:500;font-size:15px;border:1px solid transparent;cursor:pointer;
     transition:transform .2s,box-shadow .2s,background .2s,border-color .2s}
-  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 1px 3px rgba(30,33,37,.1)}
-  .btn-primary:hover{background:var(--primary-hover);transform:translateY(-2px);box-shadow:0 12px 28px -8px rgba(228,37,39,.4)}
-  .btn-outline{background:#fff;border-color:var(--line);color:var(--ink)}
-  .btn-outline:hover{border-color:#c9ccd1;background:var(--alt)}
+  .btn-primary{background:linear-gradient(180deg,#9b6bff,#7c4df0);color:#fff;box-shadow:0 8px 28px -8px rgba(139,92,246,.6)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -10px rgba(139,92,246,.7)}
+  .btn-outline{background:rgba(255,255,255,.03);border-color:var(--line);color:var(--ink)}
+  .btn-outline:hover{border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.08)}
   .btn-sm{height:38px;padding:0 18px;font-size:14px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 3px rgba(30,33,37,.05)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px -10px rgba(0,0,0,.6)}
 
-  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(255,255,255,.85);border-bottom:1px solid var(--line)}
+  header{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(11,9,19,.7);border-bottom:1px solid var(--line)}
   nav{display:flex;align-items:center;justify-content:space-between;height:66px}
   .brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px;letter-spacing:-.02em}
-  .mark{width:28px;height:28px;border-radius:8px;background:var(--primary);display:grid;place-items:center;color:#fff}
+  .mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(160deg,#9b6bff,#6d3ff0);display:grid;place-items:center;color:#fff;box-shadow:0 4px 14px -4px rgba(139,92,246,.7)}
   .navlinks{display:flex;gap:2px}
   .navlinks a{padding:8px 14px;border-radius:8px;font-size:14px;color:var(--muted);transition:color .2s}
   .navlinks a:hover{color:var(--ink)}
   @media(max-width:780px){.navlinks{display:none}}
 
-  .hero{position:relative;overflow:hidden;text-align:center;padding:72px 0 44px}
-  .hero::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% -10%,rgba(228,37,39,.07),transparent 70%)}
-  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--muted)}
-  .pdot{width:6px;height:6px;border-radius:50%;background:var(--primary)}
-  h1{margin-top:24px;font-size:clamp(36px,6.2vw,66px);line-height:1.03;letter-spacing:-.04em;font-weight:600}
+  .hero{position:relative;overflow:hidden;text-align:center;padding:80px 0 44px}
+  .orbit{position:absolute;left:50%;top:-60px;transform:translateX(-50%);z-index:0;pointer-events:none;color:rgba(139,92,246,.16)}
+  .hero .wrap{position:relative;z-index:1}
+  .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:500;color:var(--muted)}
+  .pdot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px 1px var(--accent)}
+  h1{margin-top:24px;font-size:clamp(38px,6.4vw,70px);line-height:1.02;letter-spacing:-.04em;font-weight:600}
+  h1 .grad{background:linear-gradient(120deg,#b794ff,#8b5cf6 60%,#6366f1);-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{max-width:600px;margin:24px auto 0;color:var(--muted);font-size:19px;line-height:1.55}
   .cta-row{display:flex;gap:12px;justify-content:center;margin-top:34px;flex-wrap:wrap}
   .micro{display:flex;gap:22px;justify-content:center;margin-top:20px;font-size:13px;color:var(--muted)}
-  .micro span{display:inline-flex;gap:6px;align-items:center}
-  .micro b{color:var(--primary)}
+  .micro span{display:inline-flex;gap:6px;align-items:center}.micro b{color:var(--accent)}
 
-  .board-shell{max-width:1000px;margin:56px auto 0;position:relative}
-  .chrome{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:var(--alt)}
-  .tl{width:11px;height:11px;border-radius:50%;background:#d6d9dd}
-  .url{margin-left:8px;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted)}
-  .urldot{width:6px;height:6px;border-radius:50%;background:#1E8A5E}
-  .badge-clients{margin-left:auto;background:var(--primary-soft);color:var(--primary);font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px}
-  .kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px;background:var(--alt)}
+  .board-shell{max-width:1000px;margin:56px auto 0;position:relative;z-index:1}
+  .board-shell::after{content:"";position:absolute;inset:24px 60px -30px;z-index:-1;border-radius:999px;background:rgba(139,92,246,.3);filter:blur(60px)}
+  .chrome{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .tl{width:11px;height:11px;border-radius:50%;background:#36324d}
+  .url{margin-left:8px;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px;padding:4px 12px;font-size:12px;color:var(--muted)}
+  .urldot{width:6px;height:6px;border-radius:50%;background:#4ade80}
+  .badge-clients{margin-left:auto;background:var(--primary-soft);color:#c4b5fd;font-size:12px;font-weight:600;padding:4px 12px;border-radius:999px}
+  .kanban{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:16px;background:rgba(255,255,255,.015)}
   @media(max-width:720px){.kanban{grid-template-columns:repeat(2,1fr)}}
   .col-head{display:flex;align-items:center;gap:8px;padding:0 4px 10px;font-size:12px;font-weight:600}
   .col-head .cnt{margin-left:auto;color:var(--muted);font-weight:400}
   .cdot{width:8px;height:8px;border-radius:50%}
-  .ccard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(30,33,37,.05);transition:.2s;cursor:grab}
-  .ccard:hover{box-shadow:0 8px 20px -8px rgba(30,33,37,.18);transform:translateY(-1px)}
+  .ccard{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;transition:.2s;cursor:grab}
+  .ccard:hover{border-color:rgba(139,92,246,.4);transform:translateY(-1px)}
   .ccard .top{display:flex;justify-content:space-between;align-items:center}
   .cname{font-size:13px;font-weight:500}
   .chip{font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px}
-  .chip-due{background:rgba(241,151,28,.16);color:#a9650a}
-  .chip-soon{background:var(--alt);color:var(--muted)}
-  .chip-done{background:rgba(30,138,94,.14);color:#157049}
+  .chip-due{background:rgba(245,166,35,.18);color:#f7c477}
+  .chip-soon{background:rgba(255,255,255,.06);color:var(--muted)}
+  .chip-done{background:rgba(74,222,128,.16);color:#86efac}
   .pan{font-size:11px;color:var(--muted);margin-top:4px}
   .prog{display:flex;align-items:center;gap:8px;margin-top:10px}
-  .track{flex:1;height:6px;border-radius:999px;background:var(--alt);overflow:hidden}
-  .fill{height:100%;border-radius:999px;background:var(--primary)}
+  .track{flex:1;height:6px;border-radius:999px;background:rgba(255,255,255,.07);overflow:hidden}
+  .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#8b5cf6,#c99bff)}
   .pct{font-size:10px;color:var(--muted)}
 
-  .stripsec{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:56px 0}
+  .stripsec{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015);padding:56px 0}
   .trustedline{text-align:center;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 16px;margin-top:40px}
   @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
   .stat{text-align:center}
-  .stat .v{font-size:38px;font-weight:600;letter-spacing:-.04em}
+  .stat .v{font-size:38px;font-weight:600;letter-spacing:-.04em;background:linear-gradient(120deg,#c4b5fd,#8b5cf6);-webkit-background-clip:text;background-clip:text;color:transparent}
   .stat .l{font-size:14px;color:var(--muted);margin-top:6px;max-width:220px;margin-left:auto;margin-right:auto}
 
   section.pad{padding:88px 0}
-  .alt{background:var(--alt)}
+  .alt{background:rgba(255,255,255,.015)}
   .head{max-width:660px;margin:0 auto;text-align:center}
   .head h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.03em;margin-top:16px;font-weight:600}
   .head p{color:var(--muted);margin-top:16px;font-size:16px}
@@ -92,55 +100,55 @@
   .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
   @media(max-width:900px){.grid3{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:600px){.grid3{grid-template-columns:1fr}}
-  .feat{padding:26px;height:100%;transition:transform .3s,box-shadow .3s}
-  .feat:hover{transform:translateY(-4px);box-shadow:0 14px 30px -12px rgba(30,33,37,.18)}
-  .ficon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:20px}
+  .feat{padding:26px;height:100%;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .feat:hover{transform:translateY(-4px);border-color:rgba(139,92,246,.4);box-shadow:0 20px 44px -16px rgba(139,92,246,.4)}
+  .ficon{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:20px;border:1px solid}
   .feat h3{font-size:18px;margin-top:20px;font-weight:600}
   .feat p{color:var(--muted);font-size:14px;margin-top:8px;line-height:1.6}
 
   .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
   @media(max-width:840px){.steps{grid-template-columns:repeat(2,1fr)}}
-  .step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 1px 3px rgba(30,33,37,.05)}
-  .step .n{font-family:"Geist Mono",monospace;font-size:24px;font-weight:600;color:var(--primary);letter-spacing:-.03em}
+  .step{padding:24px}
+  .step .n{font-family:"Geist Mono",monospace;font-size:24px;font-weight:600;color:#a78bfa;letter-spacing:-.03em}
   .step h3{font-size:16px;margin-top:12px;font-weight:600}
   .step p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.55}
 
   .savings{max-width:780px;margin:48px auto 0;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:14px;overflow:hidden}
   @media(max-width:560px){.savings{grid-template-columns:1fr}}
-  .sv{padding:24px;text-align:center;background:#fff}
+  .sv{padding:24px;text-align:center;background:var(--card)}
   .sv .k{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
   .sv .a{font-size:24px;font-weight:600;margin-top:8px}
   .sv.line .a{color:var(--muted);text-decoration:line-through}
-  .sv.red{background:var(--primary);color:#fff}.sv.red .k{color:rgba(255,255,255,.85)}
-  .sv.amber{background:rgba(241,151,28,.1)}.sv.amber .k,.sv.amber .a{color:#a9650a}
+  .sv.violet{background:linear-gradient(160deg,#7c4df0,#6d3ff0);color:#fff}.sv.violet .k{color:rgba(255,255,255,.85)}
+  .sv.glow{background:rgba(201,155,255,.08)}.sv.glow .k,.sv.glow .a{color:var(--accent)}
   .quote{padding:26px;display:flex;flex-direction:column;height:100%}
-  .quote .qi{color:rgba(228,37,39,.25);font-size:30px;line-height:1;font-family:Georgia,serif}
+  .quote .qi{color:rgba(139,92,246,.4);font-size:30px;line-height:1;font-family:Georgia,serif}
   .quote .q{font-size:15px;line-height:1.6;flex:1;margin-top:8px}
   .quote .by{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
   .quote .by b{font-size:14px;font-weight:600}.quote .by span{display:block;font-size:12px;color:var(--muted)}
 
   .prices{max-width:1020px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
   @media(max-width:900px){.prices{grid-template-columns:1fr;max-width:420px}}
-  .price{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px;box-shadow:0 1px 3px rgba(30,33,37,.05)}
-  .price.hi{border:2px solid var(--primary);box-shadow:0 18px 40px -16px rgba(228,37,39,.28)}
-  .tag{position:absolute;top:-13px;left:30px;background:var(--primary);color:#fff;font-size:12px;font-weight:600;padding:5px 14px;border-radius:999px}
+  .price{position:relative;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px}
+  .price.hi{border:1px solid rgba(139,92,246,.6);box-shadow:0 0 0 1px rgba(139,92,246,.3),0 24px 56px -18px rgba(139,92,246,.5)}
+  .tag{position:absolute;top:-13px;left:30px;background:linear-gradient(180deg,#9b6bff,#7c4df0);color:#fff;font-size:12px;font-weight:600;padding:5px 14px;border-radius:999px}
   .price h3{font-size:18px;font-weight:600}
   .price .tl{font-size:14px;color:var(--muted);margin-top:4px}
   .amt{margin-top:24px;display:flex;align-items:flex-end;gap:6px}
   .amt .big{font-size:40px;font-weight:600;letter-spacing:-.04em}
   .amt .per{color:var(--muted);font-size:14px;margin-bottom:7px}
   .feats{list-style:none;margin-top:24px;padding-top:24px;border-top:1px solid var(--line);display:grid;gap:13px}
-  .feats li{display:flex;gap:10px;font-size:14px;align-items:flex-start;color:#3a3e44}
-  .feats .tick{color:var(--primary);font-weight:700;margin-top:1px}
+  .feats li{display:flex;gap:10px;font-size:14px;align-items:flex-start;color:#d6d2e6}
+  .feats .tick{color:#a78bfa;font-weight:700;margin-top:1px}
   .price .btn{margin-top:26px;width:100%}
 
-  .closebox{position:relative;overflow:hidden;border-radius:24px;background:var(--ink);color:#fff;padding:64px 24px;text-align:center;margin:88px 0}
-  .closebox::after{content:"";position:absolute;left:50%;top:-40%;width:520px;height:380px;transform:translateX(-50%);border-radius:50%;background:rgba(228,37,39,.35);filter:blur(70px)}
+  .closebox{position:relative;overflow:hidden;border-radius:24px;border:1px solid rgba(139,92,246,.3);background:linear-gradient(160deg,rgba(36,27,58,.9),rgba(23,20,38,.9));padding:64px 24px;text-align:center;margin:88px 0}
+  .closebox::after{content:"";position:absolute;left:50%;top:-50%;width:600px;height:420px;transform:translateX(-50%);border-radius:50%;background:rgba(139,92,246,.4);filter:blur(80px)}
   .closebox h2{position:relative;font-size:clamp(28px,4vw,40px);letter-spacing:-.03em;font-weight:600}
-  .closebox p{position:relative;color:rgba(255,255,255,.7);margin:16px auto 0;max-width:480px}
+  .closebox p{position:relative;color:var(--muted);margin:16px auto 0;max-width:480px}
   .closebox .btn{position:relative;margin-top:32px}
 
-  footer{border-top:1px solid var(--line);background:#fff;padding:56px 0}
+  footer{border-top:1px solid var(--line);background:rgba(255,255,255,.01);padding:56px 0}
   .fgrid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px}
   @media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr}}
   .fgrid p{color:var(--muted);font-size:14px;margin-top:16px;max-width:280px}
@@ -156,15 +164,24 @@
 <body>
 
 <header><div class="wrap"><nav>
-  <a class="brand" href="#"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16" opacity=".55"/><path d="M9.5 13.5l2.5 2.5L19 8.5"/></svg></span>Lekha</a>
+  <a class="brand" href="#"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16" opacity=".55"/><path d="M9.5 13.5l2.5 2.5L19 8.5"/></svg></span>Karlabh</a>
   <div class="navlinks"><a href="#features">Features</a><a href="#how">How it works</a><a href="#proof">Firms</a><a href="#pricing">Pricing</a></div>
   <div style="display:flex;gap:8px"><a class="btn btn-outline btn-sm" href="#">Log in</a><a class="btn btn-primary btn-sm" href="#pricing">Sign up free</a></div>
 </nav></div></header>
 
-<section class="hero"><div class="wrap">
+<section class="hero">
+  <svg class="orbit" width="780" height="780" viewBox="0 0 780 780" fill="none">
+    <circle cx="390" cy="390" r="250" stroke="currentColor"/>
+    <circle cx="390" cy="390" r="340" stroke="currentColor" opacity=".6"/>
+    <circle cx="390" cy="390" r="389" stroke="currentColor" opacity=".35"/>
+    <circle cx="640" cy="390" r="4" fill="#c99bff"/>
+    <circle cx="140" cy="390" r="3" fill="#8b5cf6"/>
+    <circle cx="390" cy="50" r="3" fill="#c99bff"/>
+  </svg>
+  <div class="wrap">
   <span class="pill"><span class="pdot"></span>Built for Indian CAs · WhatsApp-native</span>
-  <h1>Stop chasing clients<br>for documents.</h1>
-  <p class="sub">Lekha sends WhatsApp reminders, collects documents through a no-login link, and tracks every client&rsquo;s filing status on one clean board. The follow-ups run themselves.</p>
+  <h1>Stop chasing clients<br>for <span class="grad">documents.</span></h1>
+  <p class="sub">Karlabh sends WhatsApp reminders, collects documents through a no-login link, and tracks every client&rsquo;s filing status on one clean board. The follow-ups run themselves.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#pricing">Get started for free →</a>
     <a class="btn btn-outline" href="#how">See how it works</a>
@@ -179,7 +196,8 @@
     </div>
     <div class="kanban" id="kanban"></div>
   </div>
-</div></section>
+  </div>
+</section>
 
 <section class="stripsec"><div class="wrap">
   <p class="trustedline reveal">Trusted by practices in Chennai · Bengaluru · Hyderabad · Mumbai · Pune · Kochi</p>
@@ -190,7 +208,7 @@
   <div class="head reveal">
     <span class="eyebrow">The practice, organised</span>
     <h2>Everything between &ldquo;send your docs&rdquo; and &ldquo;return filed.&rdquo;</h2>
-    <p>Lekha doesn&rsquo;t touch your filing software. It fixes the part that actually eats your week — collecting documents and keeping clients moving.</p>
+    <p>Karlabh doesn&rsquo;t touch your filing software. It fixes the part that actually eats your week — collecting documents and keeping clients moving.</p>
   </div>
   <div class="grid3" id="features-grid"></div>
 </div></section>
@@ -210,8 +228,8 @@
   </div>
   <div class="savings reveal">
     <div class="sv line"><div class="k">Junior chasing docs</div><div class="a num">₹15,000<span style="font-size:14px">/mo</span></div></div>
-    <div class="sv red"><div class="k">Lekha</div><div class="a num">₹1,999<span style="font-size:14px">/mo</span></div></div>
-    <div class="sv amber"><div class="k">You keep</div><div class="a num">₹13,001<span style="font-size:14px">/mo</span></div></div>
+    <div class="sv violet"><div class="k">Karlabh</div><div class="a num">₹1,999<span style="font-size:14px">/mo</span></div></div>
+    <div class="sv glow"><div class="k">You keep</div><div class="a num">₹13,001<span style="font-size:14px">/mo</span></div></div>
   </div>
   <div class="grid3" id="tst"></div>
 </div></section>
@@ -234,22 +252,22 @@
 <footer><div class="wrap">
   <div class="fgrid">
     <div>
-      <a class="brand" href="#"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16" opacity=".55"/><path d="M9.5 13.5l2.5 2.5L19 8.5"/></svg></span>Lekha</a>
+      <a class="brand" href="#"><span class="mark"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4v16" opacity=".55"/><path d="M9.5 13.5l2.5 2.5L19 8.5"/></svg></span>Karlabh</a>
       <p>The client OS for chartered accountants. Collect documents, chase nobody, file on time.</p>
     </div>
     <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#how">How it works</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Client mini-app</a></li></ul></div>
     <div><h4>Firm</h4><ul><li><a href="#">For solo CAs</a></li><li><a href="#">For firms</a></li><li><a href="#">Security</a></li><li><a href="#">Contact sales</a></li></ul></div>
     <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li><li><a href="#">Support</a></li></ul></div>
   </div>
-  <div class="fbottom"><span>© 2026 Lekha. Made in India.</span><span>WhatsApp reminders · No-login uploads · UPI fee collection</span></div>
+  <div class="fbottom"><span>© 2026 Karlabh. Made in India.</span><span>WhatsApp reminders · No-login uploads · UPI fee collection</span></div>
 </div></footer>
 
 <script>
 const columns=[
- {label:"Docs Pending",tint:"#8A8F99",cards:[{n:"Anjali Iyer",p:"A•••PI4521K",d:0,t:6,days:11},{n:"Karthik Rao",p:"B•••KR7782L",d:1,t:8,days:9}]},
- {label:"Partial",tint:"#F1971C",cards:[{n:"Ramesh Kumar",p:"C•••RK3390M",d:3,t:5,days:4},{n:"Divya Menon",p:"D•••DM1188N",d:5,t:7,days:6}]},
- {label:"Under Review",tint:"#2F7FD1",cards:[{n:"Suresh Pillai",p:"E•••SP6620P",d:8,t:8,days:2}]},
- {label:"Filed",tint:"#1E8A5E",cards:[{n:"Meena Nair",p:"F•••MN4407Q",d:6,t:6,days:0}]},
+ {label:"Docs Pending",tint:"#8b8aa0",cards:[{n:"Anjali Iyer",p:"A•••PI4521K",d:0,t:6,days:11},{n:"Karthik Rao",p:"B•••KR7782L",d:1,t:8,days:9}]},
+ {label:"Partial",tint:"#f5a623",cards:[{n:"Ramesh Kumar",p:"C•••RK3390M",d:3,t:5,days:4},{n:"Divya Menon",p:"D•••DM1188N",d:5,t:7,days:6}]},
+ {label:"Under Review",tint:"#5b9bf5",cards:[{n:"Suresh Pillai",p:"E•••SP6620P",d:8,t:8,days:2}]},
+ {label:"Filed",tint:"#4ade80",cards:[{n:"Meena Nair",p:"F•••MN4407Q",d:6,t:6,days:0}]},
 ];
 document.getElementById("kanban").innerHTML=columns.map(c=>`
  <div><div class="col-head"><span class="cdot" style="background:${c.tint}"></span>${c.label}<span class="cnt num">${c.cards.length}</span></div>
@@ -262,28 +280,28 @@ const stats=[["11 hrs","saved per staff member, weekly"],["3 taps","for a client
 document.getElementById("stats").innerHTML=stats.map((s,i)=>`<div class="stat reveal" style="transition-delay:${i*70}ms"><div class="v">${s[0]}</div><div class="l">${s[1]}</div></div>`).join("");
 
 const features=[
- ["⊞","#E11D48","#FFE4E6","One board for every client","Drag clients across Pending → Partial → Under Review → Filed → Closed. See the whole practice at a glance."],
- ["✆","#059669","#D1FAE5","WhatsApp that follows up itself","Reminders fire 3 days out, 1 day out, the morning of. Your juniors stop dialing; the messages do the chasing."],
- ["🔗","#2563EB","#DBEAFE","No-login client mini-app","Clients open a secure link, see what's missing, and upload from their phone. No accounts, no passwords."],
- ["☑","#7C3AED","#EDE9FE","Checklists that build themselves","Pick salaried, business, or NRI and Lekha generates the required-document list. Add GST & TDS as you grow."],
- ["✓","#D97706","#FEF3C7","Review without the clutter","Open every uploaded PDF in one place. Approve or request a re-upload in a click — the client is notified."],
- ["₹","#0D9488","#CCFBF1","Get paid on filing","Send a UPI link the moment you mark a return filed. Fee and acknowledgment go out in the same message."],
+ ["⊞","#c4b5fd","rgba(139,92,246,.12)","rgba(139,92,246,.25)","One board for every client","Drag clients across Pending → Partial → Under Review → Filed → Closed. See the whole practice at a glance."],
+ ["✆","#6ee7b7","rgba(16,185,129,.12)","rgba(16,185,129,.25)","WhatsApp that follows up itself","Reminders fire 3 days out, 1 day out, the morning of. Your juniors stop dialing; the messages do the chasing."],
+ ["🔗","#7dd3fc","rgba(14,165,233,.12)","rgba(14,165,233,.25)","No-login client mini-app","Clients open a secure link, see what's missing, and upload from their phone. No accounts, no passwords."],
+ ["☑","#f0abfc","rgba(217,70,239,.12)","rgba(217,70,239,.25)","Checklists that build themselves","Pick salaried, business, or NRI and Karlabh generates the required-document list. Add GST & TDS as you grow."],
+ ["✓","#fcd34d","rgba(245,158,11,.12)","rgba(245,158,11,.25)","Review without the clutter","Open every uploaded PDF in one place. Approve or request a re-upload in a click — the client is notified."],
+ ["₹","#5eead4","rgba(20,184,166,.12)","rgba(20,184,166,.25)","Get paid on filing","Send a UPI link the moment you mark a return filed. Fee and acknowledgment go out in the same message."],
 ];
 document.getElementById("features-grid").innerHTML=features.map((f,i)=>`
- <div class="feat card reveal" style="transition-delay:${(i%3)*70}ms"><div class="ficon" style="color:${f[1]};background:${f[2]}">${f[0]}</div><h3>${f[3]}</h3><p>${f[4]}</p></div>`).join("");
+ <div class="feat card reveal" style="transition-delay:${(i%3)*70}ms"><div class="ficon" style="color:${f[1]};background:${f[2]};border-color:${f[3]}">${f[0]}</div><h3>${f[4]}</h3><p>${f[5]}</p></div>`).join("");
 
 const steps=[
- ["01","Create the client, get a checklist","Pick the client type. Lekha auto-builds the document list and a secure upload link in seconds."],
+ ["01","Create the client, get a checklist","Pick the client type. Karlabh auto-builds the document list and a secure upload link in seconds."],
  ["02","WhatsApp goes out","The client gets a friendly message with their link. No app to install — it opens in their browser."],
  ["03","Documents arrive on their own","Clients upload from their phone. Auto-reminders nudge the stragglers. You watch cards turn green."],
  ["04","File, confirm, collect","Review, mark filed, and send the UPI fee link — acknowledgment and payment request go out together."],
 ];
-document.getElementById("steps").innerHTML=steps.map((s,i)=>`<div class="step reveal" style="transition-delay:${(i%4)*60}ms"><div class="n">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join("");
+document.getElementById("steps").innerHTML=steps.map((s,i)=>`<div class="step card reveal" style="transition-delay:${(i%4)*60}ms"><div class="n">${s[0]}</div><h3>${s[1]}</h3><p>${s[2]}</p></div>`).join("");
 
 const tst=[
  ["Two weeks before the deadline used to mean two phones ringing all day. Now the board tells me who's behind and the reminders handle the rest.","CA Lakshmi Venkatesh","Venkatesh & Co., Chennai"],
  ["My clients love that they don't need yet another login. They tap the WhatsApp link, upload, done. Our document chase went from days to hours.","CA Arjun Reddy","Reddy Associates, Hyderabad"],
- ["I run a three-person firm. Lekha effectively replaced the follow-up work of a full-time junior during filing season.","CA Priya Sharma","Sharma & Partners, Bengaluru"],
+ ["I run a three-person firm. Karlabh effectively replaced the follow-up work of a full-time junior during filing season.","CA Priya Sharma","Sharma & Partners, Bengaluru"],
 ];
 document.getElementById("tst").innerHTML=tst.map((t,i)=>`<figure class="quote card reveal" style="transition-delay:${i*70}ms"><div class="qi">&ldquo;</div><blockquote class="q">${t[0]}</blockquote><figcaption class="by"><b>${t[1]}</b><span>${t[2]}</span></figcaption></figure>`).join("");
 

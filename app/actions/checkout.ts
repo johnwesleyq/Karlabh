@@ -54,7 +54,7 @@ export async function createCheckoutSession(formData: FormData): Promise<void> {
     });
     checkoutUrl = session.url;
   } catch (err) {
-    console.error("[lekha] checkout error", err);
+    console.error("[karlabh] checkout error", err);
   }
 
   // redirect() throws, so it must live outside the try/catch.

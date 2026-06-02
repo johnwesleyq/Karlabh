@@ -13,7 +13,7 @@ export function CTA() {
               className="pointer-events-none absolute inset-0 opacity-40"
               style={{
                 background:
-                  "radial-gradient(50% 80% at 50% 0%, hsl(359 78% 52% / 0.10), transparent)",
+                  "radial-gradient(50% 80% at 50% 0%, hsl(258 90% 66% / 0.18), transparent)",
               }}
             />
             <div className="relative mx-auto max-w-xl">

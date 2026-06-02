@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { LekhaMark } from "./logo";
+import { KarlabhMark } from "./logo";
 
 const links = [
   { href: "#features", label: "Features" },
@@ -34,9 +34,9 @@ export function Navbar() {
     >
       <nav className="container flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2.5">
-          <LekhaMark className="h-7 w-7" />
+          <KarlabhMark className="h-7 w-7" />
           <span className="text-lg font-semibold tracking-tightest text-ink">
-            Lekha
+            Karlabh
           </span>
         </Link>
 

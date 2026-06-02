@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Lekha — "digital ledger" design system.
+ * Karlabh — "digital ledger" design system.
  * Colors are exposed as HSL CSS variables in globals.css so we can theme
  * (and ship a dark mode later) without touching component code.
  */
@@ -68,12 +68,12 @@ const config: Config = {
         tightest: "-0.04em",
       },
       boxShadow: {
-        // Soft, neutral elevation — clean and bright
-        xs: "0 1px 2px 0 hsl(220 20% 18% / 0.04)",
-        sm: "0 1px 3px 0 hsl(220 20% 18% / 0.07), 0 1px 2px -1px hsl(220 20% 18% / 0.05)",
-        md: "0 4px 16px -4px hsl(220 20% 18% / 0.10), 0 2px 6px -2px hsl(220 20% 18% / 0.06)",
-        lg: "0 18px 44px -14px hsl(220 24% 18% / 0.16), 0 4px 12px -4px hsl(220 20% 18% / 0.08)",
-        glow: "0 0 0 1px hsl(var(--primary) / 0.12), 0 12px 30px -8px hsl(var(--primary) / 0.30)",
+        // Elevation tuned for a dark canvas
+        xs: "0 1px 2px 0 hsl(250 60% 2% / 0.40)",
+        sm: "0 1px 3px 0 hsl(250 60% 2% / 0.50), 0 1px 2px -1px hsl(250 60% 2% / 0.40)",
+        md: "0 8px 24px -6px hsl(250 60% 2% / 0.55), 0 2px 8px -2px hsl(250 60% 2% / 0.45)",
+        lg: "0 24px 56px -16px hsl(250 70% 2% / 0.65), 0 6px 16px -6px hsl(250 60% 2% / 0.50)",
+        glow: "0 0 0 1px hsl(var(--primary) / 0.30), 0 16px 48px -10px hsl(var(--primary) / 0.45)",
       },
       backgroundImage: {
         "grid-faint":

@@ -9,7 +9,7 @@ export default function WelcomePage() {
           You&apos;re all set 🎉
         </h1>
         <p className="mt-3 text-muted-foreground">
-          Your 14-day trial has started. Add your first client and Lekha will
+          Your 14-day trial has started. Add your first client and Karlabh will
           generate their checklist and a secure upload link.
         </p>
         <Link href="/dashboard" className="mt-6 inline-block">

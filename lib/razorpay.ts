@@ -16,7 +16,7 @@ export async function createPaymentLink(input: PaymentLinkInput) {
   const secret = process.env.RAZORPAY_KEY_SECRET;
 
   if (!id || !secret) {
-    console.log("[lekha:razorpay:stub]", JSON.stringify(input));
+    console.log("[karlabh:razorpay:stub]", JSON.stringify(input));
     return {
       stubbed: true as const,
       short_url: `https://rzp.example/stub/${Date.now()}`,
@@ -44,7 +44,7 @@ export async function createPaymentLink(input: PaymentLinkInput) {
 
   const data = await res.json();
   if (!res.ok) {
-    console.error("[lekha:razorpay] link failed", res.status, data);
+    console.error("[karlabh:razorpay] link failed", res.status, data);
     return { ok: false as const, status: res.status };
   }
   return { ok: true as const, short_url: data.short_url as string, id: data.id };

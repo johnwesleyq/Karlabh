@@ -1,4 +1,4 @@
-# Lekha — the client OS for chartered accountants
+# Karlabh — the client OS for chartered accountants
 
 Collect documents over WhatsApp, track every client's filing status on one
 board, and get paid over UPI.

@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
   try {
     event = stripe.webhooks.constructEvent(body, sig, secret);
   } catch (err) {
-    console.error("[lekha] webhook signature verification failed", err);
+    console.error("[karlabh] webhook signature verification failed", err);
     return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
   }
 
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
         break;
     }
   } catch (err) {
-    console.error("[lekha] webhook handler error", err);
+    console.error("[karlabh] webhook handler error", err);
     return NextResponse.json({ error: "Handler failed" }, { status: 500 });
   }
 

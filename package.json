@@ -1,5 +1,5 @@
 {
-  "name": "lekha",
+  "name": "karlabh",
   "version": "1.0.0",
   "private": true,
   "description": "The client OS for chartered accountants.",
@@ -17,7 +17,7 @@
     "framer-motion": "^11.3.24",
     "geist": "^1.3.1",
     "lucide-react": "^0.441.0",
-    "next": "^16.2.7",
+    "next": "14.2.35",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "stripe": "^16.12.0",

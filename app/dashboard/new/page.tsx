@@ -22,7 +22,7 @@ export default function NewClientPage({
           Add a client
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Lekha auto-generates their document checklist and a secure upload link.
+          Karlabh auto-generates their document checklist and a secure upload link.
         </p>
 
         <form action={createClientAction} className="mt-6 space-y-4">

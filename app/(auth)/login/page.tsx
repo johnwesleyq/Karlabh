@@ -14,7 +14,7 @@ export default function LoginPage({
       subtitle="Log in to your practice dashboard."
       footer={
         <>
-          New to Lekha?{" "}
+          New to Karlabh?{" "}
           <Link href="/signup" className="font-medium text-primary hover:underline">
             Create an account
           </Link>

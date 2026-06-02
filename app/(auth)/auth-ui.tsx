@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LekhaMark } from "@/components/landing/logo";
+import { KarlabhMark } from "@/components/landing/logo";
 
 export function AuthShell({
   title,
@@ -16,9 +16,9 @@ export function AuthShell({
     <main className="grid min-h-screen place-items-center bg-muted px-4 py-12">
       <div className="w-full max-w-md">
         <Link href="/" className="mb-8 flex items-center justify-center gap-2.5">
-          <LekhaMark className="h-8 w-8" />
+          <KarlabhMark className="h-8 w-8" />
           <span className="text-xl font-semibold tracking-tightest text-ink">
-            Lekha
+            Karlabh
           </span>
         </Link>
         <div className="rounded-2xl border border-border bg-card p-8 shadow-md">

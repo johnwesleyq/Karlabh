@@ -4,37 +4,37 @@
 
 @layer base {
   :root {
-    /* Surfaces — clean Zoho white + cool light-gray sections */
-    --paper: 0 0% 100%;
-    --background: 0 0% 100%;
-    --card: 0 0% 100%;
-    --card-foreground: 220 13% 13%;
-    --muted: 220 17% 97%; /* #F6F7F9 section bg */
-    --muted-foreground: 220 6% 42%;
+    /* Surfaces — deep near-black navy with violet undertone */
+    --paper: 250 35% 7%;        /* page background */
+    --background: 250 35% 7%;
+    --card: 250 28% 11%;        /* raised surfaces */
+    --card-foreground: 250 30% 96%;
+    --muted: 250 24% 13%;       /* alt sections / muted bg */
+    --muted-foreground: 250 12% 66%;
 
-    /* Ink — near-black, not pure */
-    --ink: 220 13% 13%;
-    --foreground: 220 13% 13%; /* #1E2125 */
+    /* Ink — near-white text on dark */
+    --ink: 250 30% 97%;
+    --foreground: 250 30% 96%;
 
-    /* Lines — cool hairline */
-    --border: 220 13% 91%; /* #E6E8EB */
-    --ring: 359 78% 52%;
+    /* Hairlines on dark */
+    --border: 252 20% 22%;
+    --ring: 258 90% 66%;
 
-    /* Brand — Zoho red */
-    --primary: 359 78% 52%; /* ~#E42527 */
+    /* Brand — electric violet */
+    --primary: 258 90% 66%;          /* #8B5CF6 */
     --primary-foreground: 0 0% 100%;
-    --primary-soft: 359 80% 96%; /* #FDEAEA */
+    --primary-soft: 258 45% 17%;     /* dark violet surface for soft fills */
 
-    /* Accent — warm amber for small highlights */
-    --accent: 32 90% 52%; /* ~#F1971C */
-    --accent-foreground: 220 13% 13%;
+    /* Accent — bright lavender pop */
+    --accent: 272 92% 74%;
+    --accent-foreground: 250 40% 10%;
 
-    /* Kanban status semantics */
-    --status-pending: 220 9% 56%;
-    --status-partial: 32 90% 52%;
-    --status-review: 211 74% 50%;
-    --status-filed: 158 64% 38%;
-    --status-closed: 158 20% 38%;
+    /* Kanban status — brightened for dark */
+    --status-pending: 250 10% 58%;
+    --status-partial: 38 92% 62%;
+    --status-review: 215 90% 66%;
+    --status-filed: 150 68% 56%;
+    --status-closed: 250 12% 52%;
 
     --radius: 0.75rem;
   }
@@ -53,16 +53,21 @@
 
   body {
     @apply bg-background text-foreground font-sans;
+    background-image:
+      radial-gradient(60% 50% at 50% -5%, hsl(258 90% 60% / 0.18), transparent 70%),
+      radial-gradient(40% 40% at 85% 10%, hsl(272 90% 60% / 0.10), transparent 70%),
+      radial-gradient(50% 45% at 10% 30%, hsl(230 90% 60% / 0.08), transparent 70%);
+    background-attachment: fixed;
   }
 
-  /* Technical figures (PAN, IDs) stay monospaced; display stats use sans */
+  /* Technical figures (PAN, IDs) stay monospaced */
   .num {
     @apply font-mono tabular-nums tracking-tightest;
     font-feature-settings: "tnum" 1;
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.16);
+    background: hsl(var(--primary) / 0.32);
   }
 }
 
@@ -75,10 +80,11 @@
     @apply rounded-lg border border-border bg-card shadow-sm;
   }
 
+  /* Subtle top sheen on raised dark surfaces */
   .sheen {
     background-image: linear-gradient(
       180deg,
-      hsl(0 0% 100% / 0.12),
+      hsl(0 0% 100% / 0.06),
       transparent 45%
     );
   }

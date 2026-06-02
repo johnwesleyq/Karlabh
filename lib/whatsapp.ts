@@ -18,7 +18,7 @@ export async function sendWhatsApp(msg: WhatsAppMessage) {
   const url = process.env.WHATSAPP_API_URL ?? "https://api.interakt.ai/v1";
 
   if (!key) {
-    console.log("[lekha:whatsapp:stub]", JSON.stringify(msg));
+    console.log("[karlabh:whatsapp:stub]", JSON.stringify(msg));
     return { stubbed: true as const };
   }
 
@@ -45,7 +45,7 @@ export async function sendWhatsApp(msg: WhatsAppMessage) {
   });
 
   if (!res.ok) {
-    console.error("[lekha:whatsapp] send failed", res.status, await res.text());
+    console.error("[karlabh:whatsapp] send failed", res.status, await res.text());
     return { ok: false as const, status: res.status };
   }
   return { ok: true as const };

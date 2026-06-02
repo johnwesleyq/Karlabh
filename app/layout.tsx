@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://karlabh.com"),
-  title: "Lekha — Stop chasing clients for documents",
+  title: "Karlabh — Stop chasing clients for documents",
   description:
     "The client OS for chartered accountants. WhatsApp reminders, no-login document uploads, and a clean board that tracks every client from pending to filed.",
   keywords: [
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     "WhatsApp client reminders",
   ],
   openGraph: {
-    title: "Lekha — The client OS for chartered accountants",
+    title: "Karlabh — The client OS for chartered accountants",
     description:
       "Collect documents over WhatsApp, track filing status on one board, get paid over UPI. Stop chasing clients.",
     type: "website",
